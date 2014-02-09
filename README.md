@@ -4,7 +4,7 @@ Tired of nasty UTM codes nesting in your URLs? Sick of your web traffic getting
 attributed to the wrong sources? You need Fresh URL.
 
 
-# What's it do?
+## What's it do?
 
 When a visitor clicks through from one of your email campaigns, tweets, what
 have you, they'll likely have UTM codes in the query string of the URL.
@@ -15,16 +15,15 @@ eliminates the UTM clutter from your URL.
 Your visitors get fresh, clean URLs and you get clean analytics data.
 
 
-# How do I use it?
+## How do I use it?
 
-Include this JavaScript on your page:
+Include this JavaScript at the bottom of your page:
 
 ```html
 <script src="//fast.wistia.net/assets/external/fresh-url.js" async></script>
 ```
 
-
-# How does it work?
+## How does it work?
 
 Fresh URL will automatically try to figure out what analytics scripts you have
 running on your page, and make sure to strip the UTM codes out _after_ those
@@ -37,7 +36,7 @@ In this case, you can tell Fresh URL exactly what tracking libraries you're
 using, and it will wait for those libraries to become available.
 
 
-# Configuration
+## Configuration
 
 To specify which libraries you want Fresh URL to wait for, just do this:
 
@@ -57,7 +56,7 @@ Right now, Fresh URL knows how to wait for the following libraries:
 - [Analytics.js] (analyticsJs): Segment.io's universal analytics solution
 
 
-# Custom Triggers
+## Custom Triggers
 
 It's easy to have Fresh URL wait for other triggers before cleaning the URL.
 Say we want to wait for the variable `myLib` to be available.  Just add a
@@ -78,9 +77,9 @@ Fresh URL passes a `ready` function to the trigger function. When that trigger
 is ready, call that function.
 
 
-# The API
+## The API
 
-## FreshUrl.waitsFor
+### FreshUrl.waitsFor
 
 `FreshUrl.waitsFor` is a useful method for waiting for some condition to be
 met. It works like this:
@@ -93,7 +92,7 @@ When you call this, Fresh URL will poll the `conditionFn`. As soon as it returns
 true, the `callbackFn` will be run. Under the covers, `waitsFor` uses `FreshUrl.poll`.
 
 
-## FreshUrl.poll
+### FreshUrl.poll
 
 If you need finer grained control while waiting for some condition to be met
 The `FreshUrl.poll` method is pretty handy if you're waiting for some variable
@@ -119,14 +118,14 @@ defaults to 50ms.
 before giving up. It defaults to 5 seconds.
 
 
-## FreshUrl.originalUrl
+### FreshUrl.originalUrl
 
 Want access to the raw original URL? It's in `FreshUrl.originalUrl`.
 
 
-# Bonus Features
+## Bonus Features
 
-## Google Tag Manager
+### Google Tag Manager
 
 Fresh URL plays nicely with Google Tag Manager. It automatically detects if
 you're using Google Tag Manager and delays its automatic detection of your
@@ -136,7 +135,7 @@ It accomplishes this by pushing a function onto the `dataLayer`. That function
 is executed after your scripts are dumped into the DOM, but before they've run.
 
 
-## Wistia-specific URL parameters
+### Wistia-specific URL parameters
 
 Fresh URL automatically scrubs `wemail` and `wkey` from the URL as well.
 Isn't that nice? There's nothing worse than someone sharing a link with their
@@ -144,10 +143,10 @@ Isn't that nice? There's nothing worse than someone sharing a link with their
 email address in your stats!
 
 
-# Troubleshooting
+## Troubleshooting
 
 
-## UTM codes are not being removed from the URL
+### UTM codes are not being removed from the URL
 
 Have the script on your page but it's not clearing the UTM codes?
 It's probably detecting that you're using a particular library but not able
@@ -156,7 +155,7 @@ to detect that it's ready.
 Try checking out `freshUrl._isReady` in the console and see what it returns.
 
 
-## UTM related information is no longer showing up in my analytics
+### UTM related information is no longer showing up in my analytics
 
 If the analytics service you're using is not officially supported by Fresh URL,
 then what's likely happening is that Fresh URL is removing the UTM codes from the
@@ -166,13 +165,13 @@ Open an issue, and we'll try to add support for it. Or better yet, add support
 and submit a pull request!
 
 
-# Development
+## Development
 
 Fresh URL is written in CoffeeScript and uses
 [Jasmine](http://jasmine.github.io/2.0/introduction.html) for testing.
 
 
-## Setup
+### Setup
 
 1. Clone this repository.
 2. Make sure you have Ruby installed.
@@ -181,7 +180,7 @@ Fresh URL is written in CoffeeScript and uses
 4. Install the required gems: `bundle install`
 
 
-## Running the Specs
+### Running the Specs
 
 Fresh URL uses [Foreman](https://github.com/ddollar/foreman) to run the specs,
 compile the CoffeeScript, and uglify the JavaScript.
@@ -190,14 +189,14 @@ compile the CoffeeScript, and uglify the JavaScript.
 run the specs.
 
 
-## Minifying for release
+### Minifying for release
 
 The minified version lives in `dist/fresh_url.js`. As long as you're running
 foreman, guard will automatically be minifying the JavaScript and updating the
 file in `dist` for you.
 
 
-# MIT License
+## MIT License
 
 Copyright (C) 2014 Wistia, Inc.
 
