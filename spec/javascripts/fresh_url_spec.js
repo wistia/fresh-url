@@ -4,12 +4,12 @@ describe('FreshUrl', function() {
   });
   describe('the whole enchilada', function() {
     beforeEach(function() {
-      var dirtyUrl;
+      var dirtyPath;
       this._originalUrl = window.location.href;
       this.cleanUrl = this._originalUrl.replace(/\?.*$/, '');
       this.cleanPath = window.location.pathname;
-      dirtyUrl = "" + this.cleanPath + "?utm_medium=specs&utm_source=jasmine&wemail=my@email.com";
-      window.history.replaceState({}, '', dirtyUrl);
+      dirtyPath = "" + this.cleanPath + "?utm_medium=specs&utm_source=jasmine&wemail=my@email.com";
+      window.history.replaceState({}, '', dirtyPath);
       return this.dirtyUrl = window.location.href;
     });
     afterEach(function() {
@@ -30,8 +30,16 @@ describe('FreshUrl', function() {
       tReady();
       return expect(window.location.href).toBe(this.cleanUrl);
     });
-    return it('sets FreshUrl.originalUrl to the original page URL', function() {
+    it('sets FreshUrl.originalUrl to the original page URL', function() {
       return expect(FreshUrl.originalUrl).toBe(this._originalUrl);
+    });
+    return it('does nothing when the client doesn\'t support replaceState', function() {
+      var replaceState;
+      replaceState = window.history.replaceState;
+      window.history.replaceState = void 0;
+      new FreshUrl();
+      expect(window.location.href).toBe(this.dirtyUrl);
+      return window.history.replaceState = replaceState;
     });
   });
   describe('.allReadyCallback', function() {

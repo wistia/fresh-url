@@ -1,7 +1,3 @@
-#
-# <script>var _freshenUrlAfter = ['googleAnalytics'];</script>
-# <script src="//fast.wistia.com/" async></script>
-#
 class FreshUrl
 
   @libraries:
@@ -43,6 +39,9 @@ class FreshUrl
   # give this thing a list of strings and trigger functions to wait for
   # before cleaning the URL
   constructor: (waitList = []) ->
+    # if the client doesn't support replaceState, don't bother with anything here.
+    return unless window.history.replaceState
+
     @key = 0
     @_isReady = {}
 
@@ -87,8 +86,6 @@ class FreshUrl
 
 
   allReadyCallback: ->
-    # when everything is ready, we may clean the URL!
-    return unless window.history.replaceState
     cleanUrl = window.location.pathname + @cleanedSearch(window.location.search)
     window.history.replaceState({}, '', cleanUrl)
 

@@ -9,8 +9,8 @@ describe 'FreshUrl', ->
       @_originalUrl = window.location.href
       @cleanUrl = @_originalUrl.replace(/\?.*$/, '')
       @cleanPath = window.location.pathname
-      dirtyUrl = "#{@cleanPath}?utm_medium=specs&utm_source=jasmine&wemail=my@email.com"
-      window.history.replaceState({}, '', dirtyUrl)
+      dirtyPath = "#{@cleanPath}?utm_medium=specs&utm_source=jasmine&wemail=my@email.com"
+      window.history.replaceState({}, '', dirtyPath)
       @dirtyUrl = window.location.href
 
     afterEach ->
@@ -33,6 +33,15 @@ describe 'FreshUrl', ->
 
     it 'sets FreshUrl.originalUrl to the original page URL', ->
       expect(FreshUrl.originalUrl).toBe(@_originalUrl)
+
+
+    it 'does nothing when the client doesn\'t support replaceState', ->
+      replaceState = window.history.replaceState
+      window.history.replaceState = undefined
+      new FreshUrl()
+      expect(window.location.href).toBe(@dirtyUrl)
+      window.history.replaceState = replaceState
+
 
 
   describe '.allReadyCallback', ->
