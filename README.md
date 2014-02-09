@@ -30,25 +30,7 @@ Fresh URL will automatically try to figure out what analytics scripts you have
 running on your page, and make sure to strip the UTM codes out _after_ those
 scripts have done their thing.
 
-Of course, this automatic detection is not perfect, especially if you're using
-something like Google Tag Manager.
-
-In this case, you can tell Fresh URL exactly what tracking libraries you're
-using, and it will wait for those libraries to become available.
-
-
-## Configuration
-
-To specify which libraries you want Fresh URL to wait for, just do this:
-
-```html
-<script>
-  var _freshenUrlAfter = ['googleAnalytics', 'pardot', 'hubspot'];
-</script>
-<script src="//fast.wistia.net/assets/external/fresh-url.js" async></script>
-```
-
-Right now, Fresh URL knows how to wait for the following libraries:
+Right now, Fresh URL supports these libraries:
 
 - [Google Analytics](http://www.google.com/analytics) (googleAnalytics): works with both ga.js and analytics.js
 - [Pardot](http://pardot.com) (pardot): Salesforce's sales automation product
@@ -57,9 +39,23 @@ Right now, Fresh URL knows how to wait for the following libraries:
 - [Analytics.js] (analyticsJs): Segment.io's universal analytics solution
 
 
-## Custom Triggers
+## Configuration
 
-It's easy to have Fresh URL wait for other triggers before cleaning the URL.
+If you'd rather explicitly specify what analytics libraries you're using
+rather than having Fresh URL detect them, just do this:
+
+```html
+<script>
+  var _freshenUrlAfter = ['googleAnalytics', 'pardot', 'hubspot'];
+</script>
+<script src="//fast.wistia.net/assets/external/fresh-url.js" async></script>
+```
+
+### Custom Triggers
+
+If you're using libraries that aren't supported out of the box, it's easy to
+have Fresh URL wait for custom conditions to be met before cleaning the URL.
+
 Say we want to wait for the variable `myLib` to be available.  Just add a
 function into the `_freshenUrlAfter` array:
 
@@ -79,6 +75,15 @@ is ready, call that function.
 
 
 ## The API
+
+If you're creating custom triggers and integrating with other services, you
+may find these functions useful.
+
+
+### FreshUrl.originalUrl
+
+Want access to the raw original URL? It's available at `FreshUrl.originalUrl`.
+
 
 ### FreshUrl.waitsFor
 
@@ -118,10 +123,6 @@ defaults to 50ms.
 `timeout` is how long in milliseconds it will continue poll that `conditionFn`
 before giving up. It defaults to 5 seconds.
 
-
-### FreshUrl.originalUrl
-
-Want access to the raw original URL? It's in `FreshUrl.originalUrl`.
 
 
 ## Bonus Features
