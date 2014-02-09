@@ -21,7 +21,7 @@ Your visitors get fresh, clean URLs, and you get clean analytics data!
 Include this JavaScript at the bottom of your page:
 
 ```html
-<script src="//fast.wistia.net/assets/external/fresh-url.js" async></script>
+<script src="//fast.wistia.net/labs/fresh-url/v1.js" async></script>
 ```
 
 ## How does it work?
@@ -48,7 +48,7 @@ rather than having Fresh URL detect them, just do this:
 <script>
   var _freshenUrlAfter = ['googleAnalytics', 'pardot', 'hubspot'];
 </script>
-<script src="//fast.wistia.net/assets/external/fresh-url.js" async></script>
+<script src="//fast.wistia.net/labs/fresh-url/v1.js" async></script>
 ```
 
 ### Custom Triggers
@@ -67,7 +67,7 @@ function into the `_freshenUrlAfter` array:
   };
   var _freshenUrlAfter = ['googleAnalytics', myTrigger];
 </script>
-<script src="//fast.wistia.net/assets/external/fresh-url.js" async></script>
+<script src="//fast.wistia.net/labs/fresh-url/v1.js" async></script>
 ```
 
 Fresh URL passes a `ready` function to the trigger function. When that trigger
