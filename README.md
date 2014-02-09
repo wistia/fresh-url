@@ -156,6 +156,9 @@ to detect that it's ready.
 
 Try checking out `freshUrl._isReady` in the console and see what it returns.
 
+Also, if you're using an older browser (like IE8 or 9), this won't work. Fresh
+URL needs `history.replaceState` functionality to do its thing.
+
 
 ### UTM related information is no longer showing up in my analytics
 
