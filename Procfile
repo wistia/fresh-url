@@ -1,2 +1,2 @@
 specs: rake jasmine
-coffee: coffee -wcb .
+guard: guard start -i
