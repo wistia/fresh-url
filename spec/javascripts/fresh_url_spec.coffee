@@ -9,7 +9,7 @@ describe 'FreshUrl', ->
       @_originalUrl = window.location.href
       @cleanUrl = @_originalUrl.replace(/\?.*$/, '')
       @cleanPath = window.location.pathname
-      dirtyUrl = "#{@cleanPath}?utm_medium=specs&utm_source=jasmine"
+      dirtyUrl = "#{@cleanPath}?utm_medium=specs&utm_source=jasmine&wemail=my@email.com"
       window.history.replaceState({}, '', dirtyUrl)
       @dirtyUrl = window.location.href
 
@@ -111,3 +111,37 @@ describe 'FreshUrl', ->
 
     it 'wipes everything if there are only utm params', ->
       expectClean('?utm_medium=email&utm_source=okokok', '')
+
+    it 'eliminates wemail and wkey params', ->
+      expectClean('?wemail=brendan@wistia.com&hello=goodbye', '?hello=goodbye')
+      expectClean('?wkey=XfxcFt3422', '')
+
+
+  describe 'Wistia iframes', ->
+    window.iframes = []
+
+    createIframe = (src) ->
+      iframe = document.createElement('iframe')
+      iframe.src = src
+      iframe.width = 1
+      iframe.height = 1
+      document.body.appendChild(iframe)
+      window.iframes.push(iframe)
+
+    afterEach ->
+      while iframe = window.iframes.pop()
+        document.body.removeChild(iframe)
+
+
+    it 'calls updateWistiaIframes when a new Wistia iframe appears', (done) ->
+      spyOn(FreshUrl, 'updateWistiaIframes')
+      createIframe('https://fast.wistia.net/embed/iframe/7e37782c2c')
+      FreshUrl.waitsFor(-> FreshUrl.updateWistiaIframes.calls.any()).then(done)
+
+
+    describe '.wistiaIFrames', ->
+      it 'returns only wistia iframes', ->
+        createIframe('https://fast.wistia.net/embed/iframe/7e37782c2c')
+        createIframe('https://google.com')
+        expect(FreshUrl.wistiaIframes().length).toBe(1)
+

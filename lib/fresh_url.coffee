@@ -58,6 +58,14 @@ class FreshUrl
     if waitList.length is 0
       @allReadyCallback() if @allReady()
 
+    # update all Wistia iframes
+    FreshUrl.updateWistiaIframes()
+
+    # listen for future Wistia iframes so we can make sure to update their pageUrls
+    iframeListener = (event) ->
+      FreshUrl.updateWistiaIframes() if event.data is 'new-wistia-iframe'
+    window?.addEventListener 'message', iframeListener, false
+
 
   wait: (trigger, key) ->
     key ?= @nextKey()
@@ -86,7 +94,8 @@ class FreshUrl
 
 
   cleanedSearch: (str) ->
-    str.replace(/utm_[^&]+&?/g, '').
+    str.replace(/utm_[^&]+&?/g, '').      # no UTM codes
+        replace(/(wkey|wemail)[^&]+&?/g, '').  # no wkey, wemail
         replace(/&$/, '').
         replace(/^\?$/, '')
 
@@ -137,6 +146,24 @@ class FreshUrl
     name for name, library of FreshUrl.libraries when library.present()
 
 
+  # Returns all Wistia iframes on the page
+  @wistiaIframes: ->
+    iframe for iframe in document.getElementsByTagName('iframe') when iframe.src.match(/\/\/.*\.wistia\..*\//)
+
+
+  # Posts the originalUrl to all Wistia iframes on the page
+  @updateWistiaIframes: ->
+    message = method: 'pageUrl', args: [@originalUrl]
+
+    for iframe in @wistiaIframes()
+      try
+        iframe.contentWindow.postMessage message, '*'
+      catch e
+        # oh well, we tried
+
+
+
+
 
 if _freshenUrlAfter?
   # oh, you want to wait for specific libraries, okay!
@@ -147,7 +174,4 @@ else if window.dataLayer
 else
   # detect what's on the page, and wait for those libraries
   window.freshUrl = new FreshUrl(FreshUrl.librariesPresent())
-
-
-
 

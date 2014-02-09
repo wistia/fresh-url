@@ -140,17 +140,61 @@ is executed after your scripts are dumped into the DOM, but before they've run.
 
 Fresh URL automatically scrubs `wemail` and `wkey` from the URL as well.
 Isn't that nice? There's nothing worse than someone sharing a link with their
-`wemail` in the query string and having lots of visitors tagged with the same
-email!
+`wemail` in the query string and having multiple visitors tagged with the same
+email address in your stats!
 
 
 # Troubleshooting
 
+
+## UTM codes are not being removed from the URL
+
 Have the script on your page but it's not clearing the UTM codes?
 It's probably detecting that you're using a particular library but not able
-to register that it's ready.
+to detect that it's ready.
 
 Try checking out `freshUrl._isReady` in the console and see what it returns.
+
+
+## UTM related information is no longer showing up in my analytics
+
+If the analytics service you're using is not officially supported by Fresh URL,
+then what's likely happening is that Fresh URL is removing the UTM codes from the
+page URL before your analytics library gets a chance to report them.
+
+Open an issue, and we'll try to add support for it. Or better yet, add support
+and submit a pull request!
+
+
+# Development
+
+Fresh URL is written in CoffeeScript and uses
+[Jasmine](http://jasmine.github.io/2.0/introduction.html) for testing.
+
+
+## Setup
+
+1. Clone this repository.
+2. Make sure you have Ruby installed.
+3. Install CoffeeScript: `brew install node` and `npm install -g coffee-script`
+4. Install Uglifier: `npm install -g uglify-js`
+4. Install the required gems: `bundle install`
+
+
+## Running the Specs
+
+Fresh URL uses [Foreman](https://github.com/ddollar/foreman) to run the specs,
+compile the CoffeeScript, and uglify the JavaScript.
+
+`foreman start` and then go to `http://localhost:8888/` in your browser to
+run the specs.
+
+
+## Minifying for release
+
+The minified version lives in `dist/fresh_url.js`. As long as you're running
+foreman, guard will automatically be minifying the JavaScript and updating the
+file in `dist` for you.
 
 
 # MIT License
