@@ -1,18 +1,19 @@
 # Fresh URL
 
-Tired of nasty UTM codes nesting in your URLs? Sick of your web traffic getting
-attributed to the wrong sources? You need Fresh URL.
+When a visitor clicks through from one of your emails, tweets, or ads, they'll
+likely have UTM codes in the query string of the URL. You've seen them before,
+they look like this:
 
+```
+http://wistia.com/blog/top-hat-tips-dont-light-from-below?utm_content=buffer2ba10&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer
+```
 
-## What's it do?
+Yuck!
 
-When a visitor clicks through from one of your email campaigns, tweets, what
-have you, they'll likely have UTM codes in the query string of the URL.
+Fresh URL automatically coordinates with the analytics services you're using on 
+your page and eliminates the UTM clutter from your URL.
 
-Fresh URL coordinates with your third party analytics libraries and then
-eliminates the UTM clutter from your URL.
-
-Your visitors get fresh, clean URLs and you get clean analytics data.
+Your visitors get fresh, clean URLs, and you get clean analytics data!
 
 
 ## How do I use it?
