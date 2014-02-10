@@ -1,0 +1,17 @@
+{
+  "name": "fresh-url",
+  "version": "0.1.0",
+  "homepage": "https://github.com/wistia/fresh-url",
+  "authors": [
+    "Brendan Schwartz (https://github.com/bschwartz)"
+  ],
+  "description": "Strip tracking parameters from your URLs.",
+  "main": "dist/fresh_url.min.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec"
+  ]
+}
