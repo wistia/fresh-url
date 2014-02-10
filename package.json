@@ -4,7 +4,7 @@
   "description": "Strip tracking parameters from your URLs.",
   "main": "dist/fresh_url.min.js",
   "scripts": {
-    "test": "test"
+    "test": "./node_modules/.bin/gulp test"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,7 @@
     "gulp-util": "~2.2.14",
     "gulp-coffee": "~1.4.1",
     "gulp-uglify": "~0.2.1",
-    "gulp-concat": "~2.1.7"
+    "gulp-concat": "~2.1.7",
+    "gulp-jasmine": "~0.1.3"
   }
 }
