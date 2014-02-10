@@ -2,7 +2,7 @@
   "name": "fresh-url",
   "version": "0.1.0",
   "description": "Strip tracking parameters from your URLs.",
-  "main": "index.js",
+  "main": "dist/fresh_url.min.js",
   "scripts": {
     "test": "test"
   },
