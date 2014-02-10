@@ -150,7 +150,7 @@ email address in your stats!
 
 ### UTM codes are not being removed from the URL
 
-Have the script on your page but it's not clearing the UTM codes?
+Have the script on your page, but it's not clearing the UTM codes?
 It's probably detecting that you're using a particular library but not able
 to detect that it's ready.
 
@@ -158,6 +158,12 @@ Try checking out `freshUrl._isReady` in the console and see what it returns.
 
 Also, if you're using an older browser (like IE8 or 9), this won't work. Fresh
 URL needs `history.replaceState` functionality to do its thing.
+
+The other possibility is that you have some slow loading scripts on your page.
+By default, Fresh URL will give up if a library takes longer than 5 seconds to
+load. HubSpot and Pardot both don't send tracking info until onload fires on the
+page. If you have lots of slow loading assets on your page, this might cause
+Fresh URL to timeout while waiting for them.
 
 
 ### UTM related information is no longer showing up in my analytics
