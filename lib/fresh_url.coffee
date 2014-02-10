@@ -152,9 +152,10 @@ class FreshUrl
   @updateWistiaIframes: ->
     message =
       method: 'updateProperties'
-      args:
+      args: [
         params: { pageUrl: @originalUrl }
         options: { pageUrl: @originalUrl }
+      ]
 
     for iframe in @wistiaIframes()
       try

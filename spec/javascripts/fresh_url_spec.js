@@ -183,7 +183,7 @@ describe('FreshUrl', function() {
     });
     it('calls updateWistiaIframes when a new Wistia iframe appears', function(done) {
       spyOn(FreshUrl, 'updateWistiaIframes');
-      createIframe('https://fast.wistia.net/embed/iframe/7e37782c2c');
+      createIframe('//fast.wistia.net/embed/iframe/7e37782c2c');
       return FreshUrl.waitsFor(function() {
         return FreshUrl.updateWistiaIframes.calls.any();
       }).then(done);

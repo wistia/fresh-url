@@ -144,7 +144,7 @@ describe 'FreshUrl', ->
 
     it 'calls updateWistiaIframes when a new Wistia iframe appears', (done) ->
       spyOn(FreshUrl, 'updateWistiaIframes')
-      createIframe('https://fast.wistia.net/embed/iframe/7e37782c2c')
+      createIframe('//fast.wistia.net/embed/iframe/7e37782c2c')
       FreshUrl.waitsFor(-> FreshUrl.updateWistiaIframes.calls.any()).then(done)
 
 
