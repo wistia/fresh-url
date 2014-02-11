@@ -11,15 +11,17 @@ module.exports = (grunt) ->
             compile:
                 expand: true
                 flatten: false
-                src: 'lib/**/*.coffee'
-                dest: '../dist'
+                cwd: 'lib'
+                src: '**/*.coffee'
+                dest: 'dist'
                 ext: '.js'
 
         uglify:
             dist:
                 expand: true
-                src: ['lib/**/*.js', '!**/*.min.js']
-                dest: ''
+                cwd: 'dist'
+                src: ['**/*.js', '!**/*.min.js']
+                dest: 'dist'
                 ext: '.min.js'
 
         watch:
