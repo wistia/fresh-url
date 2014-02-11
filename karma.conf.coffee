@@ -1,17 +1,17 @@
 module.exports = (config) ->
-    config.set
-        frameworks: [
-            "mocha"
-            "sinon"
-            "chai"
-        ]
-        browsers: ["PhantomJS"]
-        preprocessors:
-            "**/*.coffee": "coffee"
+  config.set
+    frameworks: [
+      "mocha"
+      "sinon"
+      "chai"
+    ]
+    browsers: ["PhantomJS"]
+    preprocessors:
+      "**/*.coffee": "coffee"
 
-        singleRun: true
-        reporters: ["dots"]
-        files: [
-            "./lib/*.coffee"
-            "./spec/javascripts/*.coffee"
-        ]
+    singleRun: true
+    reporters: ["dots"]
+    files: [
+      "./lib/*.coffee"
+      "./spec/javascripts/*.coffee"
+    ]
