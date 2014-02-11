@@ -179,32 +179,39 @@ and submit a pull request!
 ## Development
 
 Fresh URL is written in CoffeeScript and uses
-[Jasmine](http://jasmine.github.io/2.0/introduction.html) for testing.
+[Mocha](http://visionmedia.github.io/mocha/) for testing.
 
 
 ### Setup
 
 1. Clone this repository.
-2. Make sure you have Ruby installed.
-3. Install CoffeeScript: `brew install node` and `npm install -g coffee-script`
-4. Install Uglifier: `npm install -g uglify-js`
-4. Install the required gems: `bundle install`
+2. Make sure you have node and npm installed: `brew install node`.
+3. Install the required packages: `npm install`
 
 
-### Running the Specs
+### Running the specs
 
-Fresh URL uses [Foreman](https://github.com/ddollar/foreman) to run the specs,
-compile the CoffeeScript, and uglify the JavaScript.
+Fire up the specs via grunt:
 
-`foreman start` and then go to `http://localhost:8888/` in your browser to
-run the specs.
+```
+./node_modules/.bin/grunt test
+```
 
 
 ### Minifying for release
 
-The minified version lives in `dist/fresh_url.js`. As long as you're running
-foreman, guard will automatically be minifying the JavaScript and updating the
-file in `dist` for you.
+The minified version lives in `dist/fresh_url.min.js`. To compile and minify
+everything, just run:
+
+```
+./node_modules/.bin/grunt build
+```
+
+## Thanks!
+
+- [Jonathan Kim](https://twitter.com/hijonathan) from Appcues for the JavaScript tooling
+- [Peter Reinhardt](https://twitter.com/reinpk) and [Ian Storm Taylor](https://twitter.com/ianstormtaylor) from Segment.io for sanity check and encouragement
+- [Max Schnur](https://twitter.com/maxschnur) for his usual JavaScript wizardry
 
 
 ## MIT License
