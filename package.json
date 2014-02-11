@@ -4,7 +4,7 @@
   "description": "Strip tracking parameters from your URLs.",
   "main": "dist/fresh_url.min.js",
   "scripts": {
-    "test": "./node_modules/.bin/gulp test"
+    "test": "./node_modules/.bin/karma start"
   },
   "repository": {
     "type": "git",
