@@ -34,6 +34,11 @@ module.exports = (grunt) ->
       unit:
         configFile: 'karma.conf.coffee'
 
+    release:
+      options:
+        file: 'bower.json'
+        npm: false
+
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
