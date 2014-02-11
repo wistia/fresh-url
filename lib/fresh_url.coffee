@@ -28,8 +28,8 @@ class FreshUrl
       ready: (ready) -> FreshUrl.waitsFor(-> window.simplex).then(ready)
 
     analyticsJs:
-      present: -> window.analytics
-      ready: (ready) -> FreshUrl.waitsFor(-> window.analytics).then(-> analytics.ready(ready))
+      present: -> window.analytics?.ready
+      ready: (ready) -> FreshUrl.waitsFor(-> window.analytics?.ready).then(-> analytics.ready(ready))
 
 
   # Save the original URL for convenience

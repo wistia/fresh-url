@@ -69,11 +69,13 @@ FreshUrl = (function() {
     },
     analyticsJs: {
       present: function() {
-        return window.analytics;
+        var _ref;
+        return (_ref = window.analytics) != null ? _ref.ready : void 0;
       },
       ready: function(ready) {
         return FreshUrl.waitsFor(function() {
-          return window.analytics;
+          var _ref;
+          return (_ref = window.analytics) != null ? _ref.ready : void 0;
         }).then(function() {
           return analytics.ready(ready);
         });
