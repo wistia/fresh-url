@@ -207,10 +207,11 @@ everything, just run:
 ./node_modules/.bin/grunt build
 ```
 
+
 ## Thanks!
 
-- [Jonathan Kim](https://twitter.com/hijonathan) from Appcues for the JavaScript tooling
-- [Peter Reinhardt](https://twitter.com/reinpk) and [Ian Storm Taylor](https://twitter.com/ianstormtaylor) from Segment.io for sanity check and encouragement
+- [Jonathan Kim](https://twitter.com/hijonathan) from [Appcues](http://appcues.com) for the JavaScript tooling
+- [Peter Reinhardt](https://twitter.com/reinpk) and [Ian Storm Taylor](https://twitter.com/ianstormtaylor) from [Segment.io](https://segment.io/) for the sanity check and encouragement
 - [Max Schnur](https://twitter.com/maxschnur) for his usual JavaScript wizardry
 
 
