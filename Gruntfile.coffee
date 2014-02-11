@@ -3,7 +3,7 @@ module.exports = (grunt) ->
   # Build tasks.
   grunt.registerTask 'build', ['coffee', 'uglify']
   grunt.registerTask 'default', 'build'
-  grunt.registerTask 'test', 'karma'
+  grunt.registerTask 'test', ['build', 'karma']
 
   grunt.initConfig
     coffee:
@@ -28,7 +28,7 @@ module.exports = (grunt) ->
     watch:
       coffee:
         files: '<%= coffee.compile.src %>'
-        tasks: ['coffee']
+        tasks: ['build']
 
     karma:
       unit:
