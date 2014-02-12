@@ -1,4 +1,6 @@
-# Fresh URL
+<p align="center">
+  <img height="575" width="56" src="https://raw.github.com/wistia/fresh-url/master/art/logo.gif"/>
+</p>
 
 When a visitor clicks through from one of your emails, tweets, or ads, they'll
 likely have UTM codes in the query string of the URL. You've seen them before,
