@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="575" height="56" src="https://raw.github.com/wistia/fresh-url/master/art/logo.gif"/>
+  <img width="575" height="56" style="padding:30px 0 25px 0;" src="https://raw.github.com/wistia/fresh-url/master/art/logo.gif"/>
 </p>
 
 When a visitor clicks through from one of your emails, tweets, or ads, they'll
@@ -12,8 +12,10 @@ http://wistia.com/blog/top-hat-tips-dont-light-from-below?utm_content=buffer2ba1
 
 Yuck!
 
-Fresh URL automatically coordinates with the analytics services you're using on 
-your page and eliminates the UTM clutter from your URL.
+Fresh URL removes the UTM codes from the URL in a visitor's address bar when
+they land on your website, and it automatically coordinates with the analytics
+providers you're using to make sure they have access to the UTM data before it's
+cleaned.
 
 Your visitors get fresh, clean URLs, and you get clean analytics data!
 
