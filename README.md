@@ -17,6 +17,10 @@ they land on your website, and it automatically coordinates with the analytics
 providers you're using to make sure they have access to the UTM data before it's
 cleaned.
 
+<p align="center">
+  <img width="720" height="66" src="https://raw.github.com/wistia/fresh-url/master/art/url-clean.gif"/>
+</p>
+
 Your visitors get fresh, clean URLs, and you get clean analytics data!
 
 
