@@ -10,6 +10,7 @@
   "license": "MIT",
   "ignore": [
     "**/.*",
+    "art",
     "node_modules",
     "bower_components",
     "spec"

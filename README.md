@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="575" width="56" src="https://raw.github.com/wistia/fresh-url/master/art/logo.gif"/>
+  <img width="575" height="56" src="https://raw.github.com/wistia/fresh-url/master/art/logo.gif"/>
 </p>
 
 When a visitor clicks through from one of your emails, tweets, or ads, they'll
