@@ -71,7 +71,7 @@ function into the `_freshenUrlAfter` array:
 <script>
   var myTrigger = function(ready){
     // poll for the variable myLib, when that's ready, we're ready!
-    FreshUrl.waitsFor(function(){ window.myLib }).then(ready)
+    FreshUrl.waitsFor(function(){ return window.myLib; }).then(ready)
   };
   var _freshenUrlAfter = ['googleAnalytics', myTrigger];
 </script>
