@@ -156,13 +156,13 @@ FreshUrl = (function() {
   };
 
   FreshUrl.prototype.allReadyCallback = function() {
-    var cleanUrl;
-    cleanUrl = window.location.pathname + this.cleanedSearch(window.location.search);
-    return window.history.replaceState({}, '', cleanUrl);
+    return window.history.replaceState({}, '', FreshUrl.cleanUrl());
   };
 
-  FreshUrl.prototype.cleanedSearch = function(str) {
-    return str.replace(/utm_[^&]+&?/g, '').replace(/(wkey|wemail)[^&]+&?/g, '').replace(/&$/, '').replace(/^\?$/, '');
+  FreshUrl.cleanUrl = function() {
+    var cleanSearch;
+    cleanSearch = window.location.search.replace(/utm_[^&]+&?/g, '').replace(/(wkey|wemail)[^&]+&?/g, '').replace(/&$/, '').replace(/^\?$/, '');
+    return window.location.pathname + cleanSearch + window.location.hash;
   };
 
   FreshUrl.poll = function(cond, callback, interval, timeout) {

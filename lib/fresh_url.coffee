@@ -86,15 +86,17 @@ class FreshUrl
 
 
   allReadyCallback: ->
-    cleanUrl = window.location.pathname + @cleanedSearch(window.location.search)
-    window.history.replaceState({}, '', cleanUrl)
+    window.history.replaceState({}, '', FreshUrl.cleanUrl())
 
 
-  cleanedSearch: (str) ->
-    str.replace(/utm_[^&]+&?/g, '').      # no UTM codes
+  @cleanUrl: ->
+    cleanSearch = window.location.search.
+        replace(/utm_[^&]+&?/g, '').           # no UTM codes
         replace(/(wkey|wemail)[^&]+&?/g, '').  # no wkey, wemail
         replace(/&$/, '').
         replace(/^\?$/, '')
+
+    window.location.pathname + cleanSearch + window.location.hash
 
 
   @poll: (cond, callback, interval = 50, timeout = 5000) ->

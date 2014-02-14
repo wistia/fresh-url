@@ -107,23 +107,29 @@ describe 'FreshUrl', ->
       FreshUrl.waitsFor(-> doneWaiting is true).then(done)
 
 
-  describe '#cleanedSearch', ->
-    f = new FreshUrl()
+  describe '.cleanUrl', ->
+    originalPath = window.location.href.replace(/.*\/\/[^\/]+/, '')
+
     expectClean = (before, after) ->
-      expect(f.cleanedSearch(before)).to.equal(after)
+      window.history.replaceState({}, '', before)
+      expect(FreshUrl.cleanUrl()).to.equal(after)
+      window.history.replaceState({}, '', originalPath)
 
     it 'leaves non-utm params', ->
-      expectClean('?utm_medium=email&hello=you',
-                  '?hello=you')
-      expectClean('?cat=dog&utm_medium=email&hello=you&utm_source=whatevs',
-                  '?cat=dog&hello=you')
+      expectClean('/?utm_medium=email&hello=you',
+                  '/?hello=you')
+      expectClean('/?cat=dog&utm_medium=email&hello=you&utm_source=whatevs',
+                  '/?cat=dog&hello=you')
 
     it 'wipes everything if there are only utm params', ->
-      expectClean('?utm_medium=email&utm_source=okokok', '')
+      expectClean('/?utm_medium=email&utm_source=okokok', '/')
 
     it 'eliminates wemail and wkey params', ->
-      expectClean('?wemail=brendan@wistia.com&hello=goodbye', '?hello=goodbye')
-      expectClean('?wkey=XfxcFt3422', '')
+      expectClean('/?wemail=brendan@wistia.com&hello=goodbye', '/?hello=goodbye')
+      expectClean('/?wkey=XfxcFt3422', '/')
+
+    it 'keeps the hash', ->
+      expectClean('/some/path?some=param#anchor1', '/some/path?some=param#anchor1')
 
 
   describe 'Wistia iframes', ->
