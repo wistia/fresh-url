@@ -23,6 +23,9 @@ cleaned.
 
 Your visitors get fresh, clean URLs, and you get clean analytics data!
 
+Check out this blog post for the full scoop on why we made this:
+http://wistia.com/blog/fresh-url
+
 
 ## How do I use it?
 
