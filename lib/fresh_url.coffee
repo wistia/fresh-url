@@ -2,12 +2,12 @@ class FreshUrl
 
   @libraries:
     googleAnalytics:
-      present: -> window._gaq or window.ga
+      present: -> window._gaq or window[window.GoogleAnalyticsObject]
       ready: (ready) ->
-        FreshUrl.waitsFor(-> window._gaq or window.ga).then(->
-          if window._gaq
-            _gaq.push(-> ready())
-          else if window.ga
+        FreshUrl.waitsFor(@present).then(->
+          if ga = window._gaq
+            ga.push(-> ready())
+          else if ga = window[window.GoogleAnalyticsObject]
             ga(-> ready())
         )
 
