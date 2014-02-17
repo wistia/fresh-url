@@ -4,7 +4,7 @@ class FreshUrl
     googleAnalytics:
       present: -> window._gaq or window[window.GoogleAnalyticsObject]
       ready: (ready) ->
-        FreshUrl.waitsFor(@present).then(->
+        FreshUrl.waitsFor(FreshUrl.libraries.googleAnalytics.present).then(->
           if ga = window._gaq
             ga.push(-> ready())
           else if ga = window[window.GoogleAnalyticsObject]
