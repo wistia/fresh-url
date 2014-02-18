@@ -7,7 +7,7 @@ FreshUrl = (function() {
         return window._gaq || window[window.GoogleAnalyticsObject];
       },
       ready: function(ready) {
-        return FreshUrl.waitsFor(this.present).then(function() {
+        return FreshUrl.waitsFor(FreshUrl.libraries.googleAnalytics.present).then(function() {
           var ga;
           if (ga = window._gaq) {
             return ga.push(function() {
