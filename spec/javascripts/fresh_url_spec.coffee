@@ -53,6 +53,14 @@ describe 'FreshUrl', ->
       f.allReadyCallback = done
       setTimeout((-> window.simplex = 'hi'), 50)
 
+    it 'waits for Google Analytics if it\'s not using window.ga', (done) ->
+      f = new FreshUrl(['googleAnalytics'])
+      f.allReadyCallback = done
+      setTimeout(->
+        window.blah = (fn) -> fn()
+        window.GoogleAnalyticsObject = 'blah'
+      , 50)
+
     it 'waits for a custom trigger', (done) ->
       trigger = (ready) -> setTimeout((-> ready()), 50)
       f = new FreshUrl([trigger])
