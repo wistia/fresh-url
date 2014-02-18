@@ -4,17 +4,16 @@ FreshUrl = (function() {
   FreshUrl.libraries = {
     googleAnalytics: {
       present: function() {
-        return window._gaq || window.ga;
+        return window._gaq || window[window.GoogleAnalyticsObject];
       },
       ready: function(ready) {
-        return FreshUrl.waitsFor(function() {
-          return window._gaq || window.ga;
-        }).then(function() {
-          if (window._gaq) {
-            return _gaq.push(function() {
+        return FreshUrl.waitsFor(FreshUrl.libraries.googleAnalytics.present).then(function() {
+          var ga;
+          if (ga = window._gaq) {
+            return ga.push(function() {
               return ready();
             });
-          } else if (window.ga) {
+          } else if (ga = window[window.GoogleAnalyticsObject]) {
             return ga(function() {
               return ready();
             });
