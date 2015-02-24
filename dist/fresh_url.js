@@ -23,7 +23,7 @@ FreshUrl = (function() {
     },
     hubspot: {
       present: function() {
-        return FreshUrl.scriptFrom(/\/\/js\.hubspot\.com/);
+        return window._hsq || FreshUrl.scriptFrom(/\/\/(js\.hubspot\.com|js.hs-analytics\.net)/);
       },
       ready: function(ready) {
         return FreshUrl.waitsFor(function() {

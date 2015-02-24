@@ -12,7 +12,7 @@ class FreshUrl
         )
 
     hubspot:
-      present: -> FreshUrl.scriptFrom(/\/\/js\.hubspot\.com/)
+      present: -> window._hsq or FreshUrl.scriptFrom(/\/\/(js\.hubspot\.com|js.hs-analytics\.net)/)
       ready: (ready) -> FreshUrl.waitsFor(-> window._hsq).then(-> _hsq.push(-> ready()))
 
     clicky:
