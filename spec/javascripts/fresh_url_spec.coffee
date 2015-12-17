@@ -136,6 +136,9 @@ describe 'FreshUrl', ->
       expectClean('/?wemail=brendan@wistia.com&hello=goodbye', '/?hello=goodbye')
       expectClean('/?wkey=XfxcFt3422', '/')
 
+    it 'eliminates hubspot specific params', ->
+      expectClean('/wistiafest?_hsenc=p2ANqtz--n0CoRb4ePl799XSS_cT9hLg-HpgWnnt-rJL067-6Z0MAAKaydNkQ9mzhoPYO0OTHlO00i2l6pvXEgPTO7ngPBsBMccg&_hsmi=24630100', '/wistiafest')
+
     it 'keeps the hash', ->
       expectClean('/some/path?some=param#anchor1', '/some/path?some=param#anchor1')
 

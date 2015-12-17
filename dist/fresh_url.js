@@ -160,7 +160,7 @@ FreshUrl = (function() {
 
   FreshUrl.cleanUrl = function() {
     var cleanSearch;
-    cleanSearch = window.location.search.replace(/utm_[^&]+&?/g, '').replace(/(wkey|wemail)[^&]+&?/g, '').replace(/&$/, '').replace(/^\?$/, '');
+    cleanSearch = window.location.search.replace(/utm_[^&]+&?/g, '').replace(/(wkey|wemail)[^&]+&?/g, '').replace(/(_hsenc|_hsmi)[^&]+&?/g, '').replace(/&$/, '').replace(/^\?$/, '');
     return window.location.pathname + cleanSearch + window.location.hash;
   };
 
