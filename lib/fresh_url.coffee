@@ -93,7 +93,7 @@ class FreshUrl
     cleanSearch = window.location.search.
         replace(/utm_[^&]+&?/g, '').           # no UTM codes
         replace(/(wkey|wemail)[^&]+&?/g, '').  # no wkey, wemail
-        replace(/(_hsenc|_hsmi)[^&]+&?/g, '').  # no hubspot params
+        replace(/(_hsenc|_hsmi|hsCtaTracking)[^&]+&?/g, '').  # no hubspot params
         replace(/&$/, '').
         replace(/^\?$/, '')
 
