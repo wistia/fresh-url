@@ -190,7 +190,7 @@ and submit a pull request!
 ## Development
 
 Fresh URL is written in CoffeeScript and uses
-[Mocha](http://visionmedia.github.io/mocha/) for testing.
+[Mocha](http://mochajs.org/) for testing.
 
 
 ### Setup
