@@ -155,7 +155,7 @@ FreshUrl = (function() {
   };
 
   FreshUrl.prototype.allReadyCallback = function() {
-    return window.history.replaceState({}, '', FreshUrl.cleanUrl());
+    return window.history.replaceState(window.history.state, '', FreshUrl.cleanUrl());
   };
 
   FreshUrl.cleanUrl = function() {
