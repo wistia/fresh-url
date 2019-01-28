@@ -86,7 +86,7 @@ class FreshUrl
 
 
   allReadyCallback: ->
-    window.history.replaceState({}, '', FreshUrl.cleanUrl())
+    window.history.replaceState(window.history.state, '', FreshUrl.cleanUrl())
 
 
   @cleanUrl: ->
@@ -179,4 +179,3 @@ else if window.dataLayer
 else
   # detect what's on the page, and wait for those libraries
   window.freshUrl = new FreshUrl(FreshUrl.librariesPresent())
-
